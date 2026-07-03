@@ -1,4 +1,4 @@
-import { Mail, MessageCircle, Linkedin, Github, ArrowUpRight } from 'lucide-react';
+import { Mail, Phone, Linkedin, Github, ArrowUpRight, MapPin } from 'lucide-react';
 import FadeIn from './FadeIn';
 
 interface ContactMethod {
@@ -6,33 +6,42 @@ interface ContactMethod {
   label: string;
   value: string;
   href: string;
+  color: string;
+  bgGlow: string;
 }
 
 const CONTACT_METHODS: ContactMethod[] = [
   {
     icon: Mail,
     label: 'Email',
-    value: 'goyalharsh642@gmail.com',
-    href: 'mailto:goyalharsh642@gmail.com',
+    value: 'aaftabparmar29@gmail.com',
+    href: 'mailto:aaftabparmar29@gmail.com',
+    color: 'from-blue-400 to-cyan-400',
+    bgGlow: 'rgba(59, 130, 246, 0.1)',
   },
   {
-    icon: MessageCircle,
-    label: 'WhatsApp',
-    value: '+91 81682 94032',
-    // wa.me requires digits only — no +, no spaces, no hyphens
-    href: 'https://wa.me/918168294032',
+    icon: Phone,
+    label: 'Phone',
+    value: '+91 98981 80782',
+    href: 'tel:+919898180782',
+    color: 'from-green-400 to-emerald-400',
+    bgGlow: 'rgba(52, 211, 153, 0.1)',
   },
   {
     icon: Linkedin,
     label: 'LinkedIn',
-    value: 'in/harsh-goyal-7900b2256',
-    href: 'https://www.linkedin.com/in/harsh-goyal-7900b2256/',
+    value: 'in/aaftab-parmar',
+    href: 'https://www.linkedin.com/in/aaftab-parmar-173941343/',
+    color: 'from-blue-500 to-indigo-500',
+    bgGlow: 'rgba(59, 130, 246, 0.1)',
   },
   {
     icon: Github,
     label: 'GitHub',
-    value: '@harshgoyal27',
-    href: 'https://github.com/harshgoyal27',
+    value: '@aaftabparmar-DevOps-Eng',
+    href: 'https://github.com/aaftabparmar-DevOps-Eng',
+    color: 'from-purple-400 to-pink-400',
+    bgGlow: 'rgba(168, 85, 247, 0.1)',
   },
 ];
 
@@ -40,29 +49,40 @@ const ContactSection = () => {
   return (
     <section
       id="contact"
-      className="relative w-full bg-[#0C0C0C] px-5 sm:px-8 md:px-10 pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20"
+      className="relative w-full bg-[#0C0C0C] px-5 sm:px-8 md:px-10 pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 overflow-hidden"
     >
-      {/* Heading */}
+      {/* Background effects */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/3 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-purple-500/3 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-pink-500/2 rounded-full blur-3xl" />
+      </div>
+
+      {/* Section Header */}
       <FadeIn y={40}>
-        <h2
-          className="hero-heading text-center font-black uppercase tracking-tight leading-none mb-4"
-          style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}
-        >
-          Get in touch
-        </h2>
+        <div className="text-center mb-16 sm:mb-20">
+          <span className="inline-block mb-4 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-[10px] sm:text-xs font-mono tracking-[0.3em] text-blue-400/60 uppercase">
+            / Contact
+          </span>
+          
+          <h2
+            className="font-black uppercase leading-[0.9] tracking-tight bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
+            style={{ 
+              fontSize: 'clamp(2.5rem, 8vw, 5rem)',
+              filter: 'drop-shadow(0 0 40px rgba(168, 85, 247, 0.2))',
+            }}
+          >
+            Get In Touch
+          </h2>
+          
+          <p className="mt-4 text-sm text-white/30 font-light tracking-wider max-w-md mx-auto">
+            Let's build something amazing together
+          </p>
+        </div>
       </FadeIn>
 
-      <FadeIn delay={0.15} y={20}>
-        <p
-          className="text-center font-light uppercase tracking-widest text-[#D7E2EA]/60 mb-12 sm:mb-16 md:mb-20"
-          style={{ fontSize: 'clamp(0.85rem, 1.4vw, 1.1rem)' }}
-        >
-          Pick whichever channel suits you
-        </p>
-      </FadeIn>
-
-      {/* Contact cards */}
-          <div className="mx-auto grid max-w-5xl grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
+      {/* Contact Cards Grid */}
+      <div className="mx-auto grid max-w-5xl grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6">
         {CONTACT_METHODS.map((method, i) => {
           const Icon = method.icon;
           const isExternal = method.href.startsWith('http');
@@ -73,57 +93,137 @@ const ContactSection = () => {
                 href={method.href}
                 target={isExternal ? '_blank' : undefined}
                 rel={isExternal ? 'noopener noreferrer' : undefined}
-                className="group relative flex h-full flex-col justify-between gap-8 sm:gap-10 rounded-[28px] sm:rounded-[32px] border-2 border-[#D7E2EA]/20 bg-[#141418] p-6 sm:p-7 md:p-8 transition-all duration-300 hover:border-[#D7E2EA]/60 hover:bg-[#1a1a20] hover:-translate-y-1"
+                className="group relative flex flex-col justify-between gap-6 rounded-2xl border border-white/[0.06] bg-white/[0.01] backdrop-blur-sm p-6 sm:p-7 md:p-8 transition-all duration-500 hover:scale-[1.02] hover:-translate-y-1 overflow-hidden"
               >
-                <div className="flex items-start justify-between">
-                  <div className="rounded-full border border-[#D7E2EA]/20 p-3 sm:p-3.5 transition-colors duration-300 group-hover:border-[#D7E2EA]/50">
+                {/* Card glow on hover */}
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{
+                    background: `radial-gradient(circle at 30% 30%, ${method.bgGlow}, transparent 70%)`,
+                  }}
+                />
+
+                <div className="relative z-10 flex items-start justify-between">
+                  <div 
+                    className="rounded-xl p-3.5 transition-all duration-500"
+                    style={{
+                      background: 'rgba(255, 255, 255, 0.03)',
+                      border: '1px solid rgba(255, 255, 255, 0.06)',
+                    }}
+                  >
                     <Icon
-                      className="text-[#D7E2EA]"
-                      size={22}
+                      className="text-white/50 group-hover:text-white transition-colors duration-500"
+                      size={24}
                       strokeWidth={1.5}
                     />
                   </div>
-                  <ArrowUpRight
-                    className="text-[#D7E2EA]/40 transition-all duration-300 group-hover:text-[#D7E2EA] group-hover:rotate-12"
-                    size={22}
-                    strokeWidth={1.5}
-                  />
+                  
+                  <div className="flex items-center gap-2">
+                    <ArrowUpRight
+                      className="text-white/20 group-hover:text-white/60 group-hover:rotate-45 transition-all duration-500"
+                      size={20}
+                      strokeWidth={1.5}
+                    />
+                  </div>
                 </div>
 
-                <div className="flex flex-col gap-2 sm:gap-3">
-                  <span
-                    className="font-light uppercase tracking-widest text-[#D7E2EA]/50"
-                    style={{ fontSize: 'clamp(0.7rem, 1.1vw, 0.9rem)' }}
-                  >
+                <div className="relative z-10 flex flex-col gap-2">
+                  <span className="text-xs font-mono uppercase tracking-[0.2em] text-white/30 group-hover:text-white/50 transition-colors duration-500">
                     {method.label}
                   </span>
                   <span
-                    className="font-medium text-[#D7E2EA] break-all"
-                    style={{ fontSize: 'clamp(1rem, 1.8vw, 1.4rem)' }}
+                    className={`font-semibold bg-gradient-to-r ${method.color} bg-clip-text text-transparent break-all leading-tight`}
+                    style={{ fontSize: 'clamp(0.95rem, 1.5vw, 1.2rem)' }}
                   >
                     {method.value}
                   </span>
                 </div>
+
+                {/* Bottom gradient line on hover */}
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-blue-400/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </a>
             </FadeIn>
           );
         })}
       </div>
 
-      {/* Footer line */}
-      <FadeIn delay={0.4} y={20}>
-        <div className="mx-auto mt-20 sm:mt-24 md:mt-28 flex max-w-5xl flex-col items-center gap-3 border-t border-[#D7E2EA]/10 pt-8 text-center sm:flex-row sm:justify-between">
-          <span
-            className="font-light uppercase tracking-widest text-[#D7E2EA]/50"
-            style={{ fontSize: 'clamp(0.7rem, 1.1vw, 0.9rem)' }}
+      {/* Location Card */}
+      <FadeIn delay={0.5} y={30}>
+        <div className="mt-8 mx-auto max-w-5xl">
+          <div 
+            className="relative rounded-2xl border border-white/[0.06] bg-white/[0.01] backdrop-blur-sm p-6 sm:p-8 overflow-hidden group hover:scale-[1.01] transition-all duration-500"
           >
-            © 2026 Harsh Goyal
+            {/* Glow effect */}
+            <div 
+              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+              style={{
+                background: 'radial-gradient(circle at 10% 50%, rgba(59, 130, 246, 0.06), transparent 60%)',
+              }}
+            />
+
+            <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
+              {/* Icon Container */}
+              <div 
+                className="shrink-0 rounded-2xl p-4"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(168, 85, 247, 0.15))',
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  boxShadow: '0 0 30px rgba(59, 130, 246, 0.1)',
+                }}
+              >
+                <MapPin
+                  className="text-blue-400 group-hover:text-blue-300 transition-colors duration-500"
+                  size={28}
+                  strokeWidth={1.5}
+                />
+              </div>
+
+              {/* Location Details */}
+              <div className="flex-1">
+                <span className="text-xs font-mono uppercase tracking-[0.2em] text-white/30 mb-2 block">
+                  Location
+                </span>
+                <h3 className="text-xl sm:text-2xl font-bold text-white/80 group-hover:text-white transition-colors duration-500">
+                  Surat, Gujarat
+                </h3>
+                <p className="text-sm text-white/30 font-light tracking-wider mt-1">
+                  🇮🇳 India
+                </p>
+              </div>
+
+              {/* Decorative dots */}
+              <div className="hidden sm:flex items-center gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-blue-400/60" />
+                <div className="w-1.5 h-1.5 rounded-full bg-purple-400/60" />
+                <div className="w-1.5 h-1.5 rounded-full bg-pink-400/60" />
+              </div>
+
+              {/* Animated pulse ring */}
+              <div className="hidden sm:block shrink-0">
+                <div className="relative">
+                  <div className="w-3 h-3 rounded-full bg-blue-400" />
+                  <div className="absolute inset-0 w-3 h-3 rounded-full bg-blue-400 animate-ping opacity-75" />
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom accent line */}
+            <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-400/40 via-purple-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          </div>
+        </div>
+      </FadeIn>
+
+      {/* Footer */}
+      <FadeIn delay={0.7} y={20}>
+        <div className="mx-auto mt-16 sm:mt-20 max-w-5xl flex flex-col items-center gap-3 border-t border-white/[0.04] pt-8 text-center sm:flex-row sm:justify-between">
+          <span className="text-xs font-mono tracking-wider text-white/20">
+            © 2026 Aaftab Parmar
           </span>
-          <span
-            className="font-light uppercase tracking-widest text-[#D7E2EA]/50"
-            style={{ fontSize: 'clamp(0.7rem, 1.1vw, 0.9rem)' }}
-          >
-            Designed & built in Delhi
+          <span className="text-xs font-mono tracking-wider text-white/20">
+            DevOps & Cloud Engineer
+          </span>
+          <span className="text-xs font-mono tracking-wider text-white/20">
+            Built with ❤️
           </span>
         </div>
       </FadeIn>
