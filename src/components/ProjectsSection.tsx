@@ -9,45 +9,40 @@ interface ProjectData {
   description: string;
   githubUrl: string;
   image: string;
-  tech: string[];
 }
 
 const PROJECTS: ProjectData[] = [
   {
     number: '01',
-    category: 'DevOps · Infrastructure',
+    category: 'Enterprise · Full-Stack Platform',
     name: 'CapitalX',
-    description: 'A comprehensive DevOps infrastructure project with automated deployment pipelines, container orchestration, and cloud-native architecture.',
+    description: 'Engineered end-to-end with a production-first mindset, this project showcases complete ownership across development, infrastructure, deployment, and operations, delivering a scalable, reliable, and high-performance enterprise experience.',
     githubUrl: 'https://github.com/aaftabparmar-DevOps-Eng/CapitalX.git',
     image: '/capitalx.png',
-    tech: ['Docker', 'Kubernetes', 'AWS', 'CI/CD', 'Terraform'],
   },
   {
     number: '02',
-    category: 'Cloud · Full Stack',
+    category: 'Cloud-Infrastructure · Production Systems',
     name: 'Wanderlust',
-    description: 'Mega travel application project showcasing cloud infrastructure, microservices architecture, and scalable deployment strategies.',
+    description: 'Executed the complete DevOps and cloud implementation for the project, including containerization, automated deployments, infrastructure management, and operational best practices for a scalable production environment.',
     githubUrl: 'https://github.com/aaftabparmar-DevOps-Eng/Wanderlust-Mega-Project.git',
     image: '/wanderlust.png',
-    tech: ['AWS', 'Microservices', 'Docker', 'Kubernetes', 'CI/CD'],
   },
   {
     number: '03',
-    category: 'DevOps · Automation',
+    category: 'GitOps · Cloud-Native Delivery',
     name: 'Online Shopping App',
-    description: 'E-commerce application with automated deployment, monitoring, and scaling. Built with modern DevOps practices and cloud infrastructure.',
+    description: 'Architected a modern GitOps-driven delivery pipeline that automates deployments, guarantees operational consistency, and embraces cloud-native principles to enable reliable, scalable, and production-ready application management.',
     githubUrl: 'https://github.com/aaftabparmar-DevOps-Eng/online_shopping_app.git',
     image: '/onlineshop.png',
-    tech: ['Docker', 'Jenkins', 'AWS', 'Terraform', 'Ansible'],
   },
   {
     number: '04',
-    category: 'AI · Cloud Native',
+    category: 'Agentic AI · Workflow Automation',
     name: 'AI-Powered Docker',
-    description: 'Advanced Docker implementation with AI integration, temporal agents, and automated container management using cutting-edge technologies.',
+    description: 'Architected an Agentic AI platform that seamlessly connects natural language understanding, workflow orchestration, and real-time monitoring to enable intelligent, reliable, and production-ready container operations.',
     githubUrl: 'https://github.com/aaftabparmar-DevOps-Eng/strands-temporal-agents.git',
     image: '/ai-docker.png',
-    tech: ['Docker', 'AI/ML', 'Python', 'Temporal', 'Cloud'],
   },
 ];
 
@@ -81,7 +76,7 @@ const ProjectCard = ({ project, index, total, containerRef }: ProjectCardProps) 
     >
       <motion.article
         style={{ scale }}
-        className="origin-top mx-auto h-full w-full flex flex-col gap-4 sm:gap-6 rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border border-white/[0.06] bg-[#0C0C0C] p-5 sm:p-6 md:p-8 overflow-hidden"
+        className="origin-top mx-auto h-full w-full flex flex-col gap-5 sm:gap-7 rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border border-white/[0.06] bg-[#0C0C0C] p-6 sm:p-7 md:p-10 overflow-hidden"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -92,14 +87,14 @@ const ProjectCard = ({ project, index, total, containerRef }: ProjectCardProps) 
         </div>
 
         {/* TOP ROW - Number + Category + Name + GitHub */}
-        <div className="relative z-10 flex flex-col sm:flex-row items-start sm:justify-between gap-3 sm:gap-6 shrink-0">
-          <div className="flex flex-row items-start gap-3 sm:gap-6 md:gap-10 min-w-0 w-full">
+        <div className="relative z-10 flex flex-col sm:flex-row items-start sm:justify-between gap-4 sm:gap-6 shrink-0">
+          <div className="flex flex-row items-start gap-4 sm:gap-8 md:gap-12 min-w-0 w-full">
             
-            {/* 3D ANIMATED NUMBER - Full rotate, wapas same, dark color */}
+            {/* 3D ANIMATED NUMBER */}
             <div
               className="shrink-0 font-black leading-none select-none"
               style={{ 
-                fontSize: 'clamp(2.5rem, 10vw, 140px)',
+                fontSize: 'clamp(3rem, 12vw, 160px)',
                 perspective: '500px',
               }}
             >
@@ -121,29 +116,29 @@ const ProjectCard = ({ project, index, total, containerRef }: ProjectCardProps) 
               </motion.span>
             </div>
 
-            <div className="flex flex-col gap-1 sm:gap-3 pt-1 sm:pt-3 md:pt-4 min-w-0 flex-1">
+            <div className="flex flex-col gap-2 sm:gap-3 pt-2 sm:pt-4 md:pt-5 min-w-0 flex-1">
               <span
-                className="font-light uppercase tracking-widest text-blue-400/40"
-                style={{ fontSize: 'clamp(0.65rem, 1.2vw, 1rem)' }}
+                className="font-light uppercase tracking-widest text-blue-400/50"
+                style={{ fontSize: 'clamp(0.75rem, 1.3vw, 1.1rem)' }}
               >
                 {project.category}
               </span>
               <h3
-                className="font-medium uppercase text-white leading-tight"
-                style={{ fontSize: 'clamp(1.1rem, 2.2vw, 2.1rem)' }}
+                className="font-semibold uppercase text-white leading-tight"
+                style={{ fontSize: 'clamp(1.3rem, 2.5vw, 2.4rem)' }}
               >
                 {project.name}
               </h3>
             </div>
           </div>
 
-          {/* 3D ANIMATED GITHUB BUTTON - Color Highlighted */}
+          {/* 3D ANIMATED GITHUB BUTTON - Same as before */}
           <div className="shrink-0 self-start sm:self-auto pt-1 sm:pt-2 md:pt-3 w-full sm:w-auto">
             <motion.a
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm px-5 py-2.5 sm:px-6 sm:py-3 text-[10px] sm:text-xs font-medium uppercase tracking-[0.1em] w-full sm:w-auto"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm px-5 py-2.5 sm:px-6 sm:py-3 text-[11px] sm:text-xs font-medium uppercase tracking-[0.1em] w-full sm:w-auto"
               style={{ perspective: '300px' }}
               animate={{
                 rotateY: isHovered ? [0, 360, 0] : 0,
@@ -182,27 +177,17 @@ const ProjectCard = ({ project, index, total, containerRef }: ProjectCardProps) 
           </div>
         </div>
 
-        {/* Description + Tech Tags */}
+        {/* Description - Larger font */}
         <div className="relative z-10 shrink-0">
           <p
-            className="text-white/35 font-light leading-relaxed max-w-2xl mb-3"
-            style={{ fontSize: 'clamp(0.75rem, 1.1vw, 0.95rem)' }}
+            className="text-white/40 font-light leading-relaxed max-w-3xl"
+            style={{ fontSize: 'clamp(0.9rem, 1.3vw, 1.15rem)' }}
           >
             {project.description}
           </p>
-          <div className="flex flex-wrap gap-1.5">
-            {project.tech.map((tag) => (
-              <span
-                key={tag}
-                className="text-[10px] sm:text-[11px] font-mono text-white/25 bg-white/[0.02] border border-white/[0.04] rounded-full px-3 py-1"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
         </div>
 
-        {/* IMAGE - Full visible, object-contain */}
+        {/* IMAGE - Full visible */}
         <div className="relative z-10 flex-1 min-h-0 rounded-3xl overflow-hidden border border-white/[0.04] bg-black/20">
           <img
             src={project.image}
@@ -293,3 +278,4 @@ const ProjectsSection = () => {
 };
 
 export default ProjectsSection;
+

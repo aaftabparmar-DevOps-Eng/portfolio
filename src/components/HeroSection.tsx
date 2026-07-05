@@ -73,10 +73,18 @@ const HeroSection = () => {
         <div className="flex flex-1 flex-col justify-center">
           <div className="w-full max-w-7xl">
             
+            {/* STYLISH ANIMATED "My name is" BADGE */}
             <FadeIn delay={0.3} y={25}>
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm px-4 py-1.5 text-[11px] sm:text-xs font-light tracking-[0.3em] text-white/50 uppercase mb-3">
-                ✦ My name is
-              </span>
+              <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm px-5 py-2 mb-3 group hover:bg-white/10 hover:border-purple-400/30 transition-all duration-500">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-purple-500" />
+                </span>
+                <span className="text-sm sm:text-base font-light tracking-[0.25em] text-white/60 uppercase group-hover:text-white/90 transition-colors duration-500">
+                  My name is
+                </span>
+                <span className="text-purple-400/40 text-lg">→</span>
+              </div>
             </FadeIn>
 
             <FadeIn delay={0.5} y={35}>
@@ -86,7 +94,6 @@ const HeroSection = () => {
               </h1>
             </FadeIn>
 
-            {/* Tagline + Separator together */}
             <FadeIn delay={0.65} y={20}>
               <p className="mt-3 text-[11px] sm:text-xs md:text-sm font-light tracking-[0.25em] text-white/60 uppercase">
                 DevOps & Cloud Engineer

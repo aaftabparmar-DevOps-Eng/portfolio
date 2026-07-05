@@ -8,6 +8,8 @@ interface ContactMethod {
   href: string;
   color: string;
   bgGlow: string;
+  iconBg: string;
+  iconColor: string;
 }
 
 const CONTACT_METHODS: ContactMethod[] = [
@@ -18,6 +20,8 @@ const CONTACT_METHODS: ContactMethod[] = [
     href: 'mailto:aaftabparmar29@gmail.com',
     color: 'from-blue-400 to-cyan-400',
     bgGlow: 'rgba(59, 130, 246, 0.1)',
+    iconBg: 'linear-gradient(135deg, #3b82f6, #06b6d4)',
+    iconColor: '#ffffff',
   },
   {
     icon: Phone,
@@ -26,6 +30,8 @@ const CONTACT_METHODS: ContactMethod[] = [
     href: 'tel:+919898180782',
     color: 'from-green-400 to-emerald-400',
     bgGlow: 'rgba(52, 211, 153, 0.1)',
+    iconBg: 'linear-gradient(135deg, #22c55e, #10b981)',
+    iconColor: '#ffffff',
   },
   {
     icon: Linkedin,
@@ -34,6 +40,8 @@ const CONTACT_METHODS: ContactMethod[] = [
     href: 'https://www.linkedin.com/in/aaftab-parmar-173941343/',
     color: 'from-blue-500 to-indigo-500',
     bgGlow: 'rgba(59, 130, 246, 0.1)',
+    iconBg: 'linear-gradient(135deg, #2563eb, #4f46e5)',
+    iconColor: '#ffffff',
   },
   {
     icon: Github,
@@ -42,6 +50,8 @@ const CONTACT_METHODS: ContactMethod[] = [
     href: 'https://github.com/aaftabparmar-DevOps-Eng',
     color: 'from-purple-400 to-pink-400',
     bgGlow: 'rgba(168, 85, 247, 0.1)',
+    iconBg: 'linear-gradient(135deg, #a855f7, #ec4899)',
+    iconColor: '#ffffff',
   },
 ];
 
@@ -104,15 +114,26 @@ const ContactSection = () => {
                 />
 
                 <div className="relative z-10 flex items-start justify-between">
+                  
+                  {/* 3D ANIMATED ICON */}
                   <div 
-                    className="rounded-xl p-3.5 transition-all duration-500"
+                    className="rounded-xl p-3.5 transition-all duration-500 group-hover:scale-110 group-hover:rotate-12 group-hover:shadow-lg"
                     style={{
-                      background: 'rgba(255, 255, 255, 0.03)',
-                      border: '1px solid rgba(255, 255, 255, 0.06)',
+                      background: method.iconBg,
+                      boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
+                      transform: 'perspective(200px) rotateY(0deg)',
+                      transition: 'all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'perspective(200px) rotateY(15deg) rotateX(-5deg) scale(1.1)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'perspective(200px) rotateY(0deg) rotateX(0deg) scale(1)';
                     }}
                   >
                     <Icon
-                      className="text-white/50 group-hover:text-white transition-colors duration-500"
+                      className="transition-all duration-500"
+                      style={{ color: method.iconColor }}
                       size={24}
                       strokeWidth={1.5}
                     />
@@ -162,13 +183,21 @@ const ContactSection = () => {
             />
 
             <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
-              {/* Icon Container */}
+              {/* Location Icon - 3D Animated */}
               <div 
-                className="shrink-0 rounded-2xl p-4"
+                className="shrink-0 rounded-2xl p-4 transition-all duration-500 group-hover:scale-110 group-hover:shadow-lg"
                 style={{
-                  background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(168, 85, 247, 0.15))',
+                  background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(168, 85, 247, 0.2))',
                   border: '1px solid rgba(255, 255, 255, 0.08)',
                   boxShadow: '0 0 30px rgba(59, 130, 246, 0.1)',
+                  transform: 'perspective(200px) rotateY(0deg)',
+                  transition: 'all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'perspective(200px) rotateY(15deg) rotateX(-5deg) scale(1.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'perspective(200px) rotateY(0deg) rotateX(0deg) scale(1)';
                 }}
               >
                 <MapPin
