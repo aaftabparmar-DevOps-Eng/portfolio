@@ -46,8 +46,10 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/70" />
 
       <div className="relative z-20 flex min-h-screen flex-col py-6 md:py-8 px-6 md:px-10">
+        
+        {/* Navigation Buttons */}
         <FadeIn delay={0} y={-20} className="relative">
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1 flex-wrap">
             <a href="#about" className="group relative flex items-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm px-3 py-2 hover:bg-white/10 hover:border-white/30 transition-all duration-300">
               <span className="flex items-center justify-center w-5 h-5 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 text-[9px] font-bold text-white">01</span>
               <span className="text-[11px] sm:text-xs font-medium uppercase tracking-[0.15em] text-white/70 group-hover:text-white transition-colors">About</span>
@@ -67,13 +69,27 @@ const HeroSection = () => {
               <span className="flex items-center justify-center w-5 h-5 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 text-[9px] font-bold text-white">04</span>
               <span className="text-[11px] sm:text-xs font-medium uppercase tracking-[0.15em] text-white/70 group-hover:text-white transition-colors">Contact</span>
             </a>
+            
+            {/* Resume Button */}
+            <span className="text-white/10 mx-2">|</span>
+            <a
+              href="/aaftab.pdf"
+              download="Aaftab_Parmar_Resume.pdf"
+              className="group relative flex items-center gap-2 rounded-full border border-white/10 bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-sm px-3 py-2 hover:from-blue-500/20 hover:to-purple-500/20 hover:border-white/30 hover:scale-105 transition-all duration-300"
+            >
+              <svg className="w-3.5 h-3.5 text-blue-400 group-hover:text-blue-300 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              <span className="text-[11px] sm:text-xs font-medium uppercase tracking-[0.15em] text-white/70 group-hover:text-white transition-colors">
+                Resume
+              </span>
+            </a>
           </div>
         </FadeIn>
 
         <div className="flex flex-1 flex-col justify-center">
           <div className="w-full max-w-7xl">
             
-            {/* STYLISH ANIMATED "My name is" BADGE */}
             <FadeIn delay={0.3} y={25}>
               <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm px-5 py-2 mb-3 group hover:bg-white/10 hover:border-purple-400/30 transition-all duration-500">
                 <span className="relative flex h-2.5 w-2.5">
@@ -88,9 +104,8 @@ const HeroSection = () => {
             </FadeIn>
 
             <FadeIn delay={0.5} y={35}>
-              <h1 className="font-bold uppercase tracking-[0.05em] text-white drop-shadow-2xl" style={{ fontSize: 'clamp(1.8rem, 5vw, 3.5rem)', textShadow: '0 0 40px rgba(168, 85, 247, 0.4), 0 0 80px rgba(168, 85, 247, 0.2)' }}>
-                Aaftab{' '}
-                <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Parmar</span>
+              <h1 className="font-light tracking-wide text-white" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.6rem)' }}>
+                Aaftab Parmar
               </h1>
             </FadeIn>
 
@@ -106,14 +121,14 @@ const HeroSection = () => {
             </FadeIn>
 
             <FadeIn delay={0.85} y={25}>
-              <p className="mt-5 text-sm sm:text-base md:text-lg font-light leading-relaxed text-white/70 max-w-xl">
+              <p className="mt-5 text-sm sm:text-base font-light leading-relaxed text-white/70 max-w-xl">
                 I take raw infrastructure and turn it into scalable, automated systems. Using modern DevOps tools and cloud platforms, I build environments that deploy faster, scale effortlessly, and run reliably.
               </p>
             </FadeIn>
 
             <FadeIn delay={1.1} y={30}>
               <div className="mt-8">
-                <h2 className="font-black uppercase tracking-wider" style={{ fontSize: 'clamp(1.5rem, 4vw, 2.8rem)', background: 'linear-gradient(to right, #60a5fa, #c084fc, #f472b6, #fb923c)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', textShadow: '0 0 60px rgba(168, 85, 247, 0.3)' }}>
+                <h2 className="font-light tracking-wider" style={{ fontSize: 'clamp(1.2rem, 3vw, 2rem)', background: 'linear-gradient(to right, #60a5fa, #c084fc, #f472b6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                   Welcome to my portfolio.
                 </h2>
               </div>
